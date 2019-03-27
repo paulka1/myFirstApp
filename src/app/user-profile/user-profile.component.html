@@ -1,0 +1,24 @@
+<div>
+  <img [src]="user.photo" alt="YellowFace">
+</div>
+
+<div>
+  <h3>
+    {{ user.quote }}
+  </h3>
+</div>
+
+<div>
+  <input [(ngModel)]="user.quote" type="text" name="citation">
+</div>
+
+
+<div>
+
+    <p> {{ user.name }} </p>
+    <p> {{ user.firstName }} </p>
+<span [hidden]= "show">  {{ user.age }} </span>
+</div>
+
+
+<button (click)= "ageHidden()" >Button del la muerte</button>
