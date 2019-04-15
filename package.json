@@ -1,6 +1,6 @@
 {
-  "name": "my-first-app",
-  "version": "0.0.0",
+  "name": "json-schema",
+  "version": "0.2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -19,7 +19,11 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@ngtools/json-schema": "^1.1.0",
+    "@schematics/angular": "^7.3.8",
     "core-js": "^2.5.4",
+    "json-schema": "^0.2.3",
+    "jsonschema": "^1.2.4",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
@@ -44,5 +48,28 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2"
-  }
+  },
+  "author": "Kris Zyp",
+  "keywords": [
+    "json",
+    "schema"
+  ],
+  "licenses": [
+    {
+      "type": "AFLv2.1",
+      "url": "http://trac.dojotoolkit.org/browser/dojo/trunk/LICENSE#L43"
+    },
+    {
+      "type": "BSD",
+      "url": "http://trac.dojotoolkit.org/browser/dojo/trunk/LICENSE#L13"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/kriszyp/json-schema"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./lib/validate.js"
 }
