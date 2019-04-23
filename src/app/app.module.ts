@@ -8,7 +8,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FormsModule } from '@angular/forms';
 import { ListFilmsComponent } from './list-films/list-films.component';
 import { HighlightDirective } from './highlight.directive';
-import { MenuComponent } from './menu/menu.component'; // <-- NgModel lives here
+import { MenuComponent } from './menu/menu.component';
+import { OrderComponent } from './class/order/order.component'; // <-- NgModel lives here
 
 @NgModule({
   declarations: [
@@ -17,12 +18,13 @@ import { MenuComponent } from './menu/menu.component'; // <-- NgModel lives here
     UserProfileComponent,
     ListFilmsComponent,
     HighlightDirective,
-    MenuComponent
+    MenuComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

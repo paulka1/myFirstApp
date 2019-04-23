@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from '../class/Order';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  email = 'gvjvv@hotmail.fr'
+  formApp: Order = new Order;
 
   constructor() { }
 

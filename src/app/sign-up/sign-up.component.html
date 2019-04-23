@@ -1,6 +1,21 @@
-<h1>emailRenseignéDansInput</h1>
-<input type="email" name="email"/>
+<form (ngSubmit)="onSubmit()">
 
-<p>
-{{ email }}
-</p>
+    <div>
+      <label for="user-form">User</label>
+      <input name="user-form" type="text" [(ngModel)]="formApp.user" #user='ngModel' required>
+    </div>
+    <div *ngIf="user.errors">
+        <span *ngIf="user.errors.required">Le champs user est requis</span>
+        <span *ngIf="user.errors.min">Le champs user est requis</span>
+        <span *ngIf="user.errors.max">Le champs user est requis</span>
+    </div>
+    
+    <div>
+      <label for="email-form">Email</label>
+      <input name="email-form" type="text" [(ngModel)]="formApp.email" required max="5">
+    </div>
+    
+    <button type="reset">Restaurer</button>
+    <button type="submit">Sauvegarder</button>
+
+  </form>
