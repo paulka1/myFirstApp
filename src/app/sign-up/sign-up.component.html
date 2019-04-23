@@ -1,18 +1,38 @@
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="myForm.valid && onSubmit(form)" #myForm='ngForm'>
 
     <div>
       <label for="user-form">User</label>
-      <input name="user-form" type="text" [(ngModel)]="formApp.user" #user='ngModel' required>
+      <input
+       name="user-form"
+       type="text" 
+       [(ngModel)]="formApp.user" 
+       #user='ngModel' 
+       required 
+       maxlength="25" 
+       minlength="4">
     </div>
-    <div *ngIf="user.errors">
-        <span *ngIf="user.errors.required">Le champs user est requis</span>
-        <span *ngIf="user.errors.min">Le champs user est requis</span>
-        <span *ngIf="user.errors.max">Le champs user est requis</span>
+
+    <div *ngIf="myForm.submitted && user.errors">
+        <span *ngIf="user.errors.required">Le champ est requis</span>
+        <span *ngIf="user.errors.minlength">La quantité minimum doit être supérieur à 4</span>
+        <span *ngIf="user.errors.maxlength">La quantité maximale doit être inférieure à 25</span>
     </div>
     
     <div>
       <label for="email-form">Email</label>
-      <input name="email-form" type="text" [(ngModel)]="formApp.email" required max="5">
+      <input 
+      name="email-form" 
+      type="text" 
+      [(ngModel)]="formApp.email" 
+      required email
+      #mail="ngModel" 
+      >
+    </div>
+
+    <div *ngIf="myForm.submitted && mail.errors">
+      <span *ngIf="mail.errors.required">Le champ email est requis</span>
+      <span *ngIf="mail.errors.email">Le champ email est invalide</span>
+
     </div>
     
     <button type="reset">Restaurer</button>

@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { ListFilmsComponent } from './list-films/list-films.component';
 import { HighlightDirective } from './highlight.directive';
 import { MenuComponent } from './menu/menu.component';
-import { OrderComponent } from './class/order/order.component'; // <-- NgModel lives here
 
 @NgModule({
   declarations: [
@@ -19,7 +18,7 @@ import { OrderComponent } from './class/order/order.component'; // <-- NgModel l
     ListFilmsComponent,
     HighlightDirective,
     MenuComponent,
-    OrderComponent
+
   ],
   imports: [
     BrowserModule,
