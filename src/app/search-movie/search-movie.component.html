@@ -1,7 +1,26 @@
-<form (ngSubmit)="onSubmit()" [FormGroup]="reactiveExo" >
-  <input formControlName="identifiant">
+<form (ngSubmit)="onSubmit()" [formGroup]="reactiveExo" class="d-flex flex-column p-4">
+  <div formGroupName="identi">
+    <label for="identifiant"> Identifiant </label>
+      <input formControlName="identifiant" name="identifiant">
+    
+    <label for="titre">Titre</label>  
+      <input formControlName="titre" name="titre">
+  </div>
 
-  <select>
-    <option></option>
+  <label for="release">Release</label>
+    <input type='number' formControlName="release" name="release">
+  <div *ngIf="reactiveExo.controls.release.errors && validationBool">
+    <span>La date doit être comprise entre {{min}} et {{max}}</span>
+  </div>
+
+  <select formControlName="type">
+    <option *ngFor="let item of tableType" [ngValue]="item">{{item}}</option>
   </select>
+
+  <select formControlName="fiche">
+    <option *ngFor="let item of tableFiche" [ngValue]="item">{{item}}</option>
+  </select>
+
+  <button>Button</button>
+
 </form>

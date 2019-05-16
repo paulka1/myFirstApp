@@ -6,32 +6,47 @@ import { FormGroup, FormBuilder, Validators, ValidatorFn, ValidationErrors, Abst
   templateUrl: './search-movie.component.html',
   styleUrls: ['./search-movie.component.scss']
 })
+
 export class SearchMovieComponent implements OnInit {
 reactiveExo: FormGroup;
-reactiveExoSuite: FormGroup;
+min=1900;
+max=2019; 
+tableType=['film', 'série', 'épisode'];
+tableFiche=['complète', 'courte'];
+validationBool= false;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.reactiveExo = this.fb.group({
-
-      'identifiant': ['',Validators.required],
-      'titre': ['',Validators.required]
-      }),
+      identi: this.fb.group({
+        identifiant: ['',Validators.required],
+        titre: ['',Validators.required]
+      },
       {
         validator: this.checkTrueValidator('titre','identifiant')
-      }
-      this.reactiveExoSuite = this.fb.group({
-        'release': ['',Validators.compose([
-          Validators.required,
-          Validators.min(1900),
-          Validators.max(2019)
-        ])],
+      }),
 
-      })
-
+        release: ['',this.rangeDateValidator(this.min, this.max)],
+        type: [''],
+        fiche: ['']
+      });
+      this.initType();
+      this.initFiche();
     }
 
+initType() {
+  this.reactiveExo.patchValue({
+    type: this.tableType[1]
+  });
+  console.log(this.tableType[1])
+}
+
+initFiche() {
+  this.reactiveExo.patchValue({
+    fiche: this.tableFiche[1]
+  })
+};
 
  checkTrueValidator (identifiant, titre): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -46,7 +61,29 @@ reactiveExoSuite: FormGroup;
       return null;
     }
   };
+}
 
+  rangeDateValidator (min, max): ValidatorFn {
+     return (control: AbstractControl): ValidationErrors | null => {
+    console.log(max)
+    console.log(control.value)
+    if (control.value == ''){
+      return 
+    }
+    else if(control.value > max || control.value < min ) {
+      return { min: "La date doit être comprise entre " + min + " et " + max }
+    } else {
+      return null;
+    }
+    
+  } 
+}
+
+onSubmit() {
+  this.validationBool= true;
+
+  console.log(JSON.stringify(this.reactiveExo.value))
 }
 }
+
 
